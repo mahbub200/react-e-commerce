@@ -7,10 +7,12 @@ export const Navbar = () => {
         <div className='navbox'>
              <div className='leftside'> <img src={logo} alt="" /></div>
              <div className='rightside'>
-             <span><Link to="signup" className='navlink'>SIGN UP</Link></span>
-                <span><Link to="login" className='navlink'>LOGIN</Link></span>
+            
+             <Link to="signup" className='navlink'>&nbsp;SIGN UP  &nbsp; &nbsp;&nbsp;&nbsp;</Link>
+             <Link to="login" className='navlink'>LOGIN</Link>
              
              </div>
+            
             Navbar
         </div>
     )
