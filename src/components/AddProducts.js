@@ -28,23 +28,25 @@ export const AddProducts = () => {
         uploadTask.on('state_changed', snapshot => {
             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             console.log(progress);
-        }, err => setError(err.message)
-            , () => {
-                storage.ref('product-images').child(productImg.name).getDownloadURL().then(url => {
-                    db.collection('Products').add({
-                        ProductName: productName,
-                        ProductPrice: Number(productPrice),
-                        ProductImg: url
-                    }).then(() => {
-                        setProductName('');
-                        setProductPrice(0)
-                        setProductImg('');
-                        setError('');
-                        document.getElementById('file').value = '';
-                    }).catch(err => setError(err.message));
-                })
-            })
-    }
+    }, err => setError(err.message)
+    , () => {
+        storage.ref('product-images').child(productImg.name).getDownloadURL().then(url => {
+            db.collection('Products').add({
+                ProductName: productName,
+                ProductPrice: Number(productPrice),
+                ProductImg: url
+            }).then(() => {
+                setProductName('');
+                setProductPrice(0)
+                setProductImg('');
+                setError('');
+                document.getElementById('file').value = '';
+            }).catch(err => setError(err.message));
+        })
+    })
+}
+        
+    
     return (
         <div className='container'>
             <br />
